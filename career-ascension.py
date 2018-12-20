@@ -9,28 +9,31 @@ app = Flask(__name__)
 db = omnidb.OmniDB(host='192.168.33.40', user='root',passwd='rootpassword1234', database='OMNIDB')
 
 @app.route('/')
-def omni_index():
-    models = []
+def ca_index():
+    postings = []
     result = db.get_latest_models()
     for r in result:
-        models.append(
+        postings.append(
             {
-                'Name' : r[1],
-                'CreatedBy' : r[2],
-                'LastUpdated': r[3],
-                'Tags' : r[4],
-                'URL' : r[5]
+                'Company' : r[1],
+                'Title' : r[2],
              }
         )
-    return render_template('index.html', models = models)
+    postings.append(
+        {
+            'Company': 'Test1',
+            'Title': 'Site Reliability Engineer',
+        }
+    )
+    return render_template('index.html', postings = postings)
 
-@app.route('/upload', methods=['GET'])
-def create_model():
-    return render_template('upload_model.html')
+@app.route('/category/<category>', methods=['GET'])
+def get_category(category):
+    return render_template('job_category.html')
 
-@app.route('/find', methods=['GET'])
+@app.route('/post', methods=['GET'])
 def find_model():
-    return render_template('find_model.html')
+    return render_template('post_job.html')
 
 @app.route('/search/<value>', methods=['GET'])
 def search_model(value):

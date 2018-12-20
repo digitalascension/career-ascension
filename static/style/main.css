@@ -1,45 +1,12 @@
-.model
-{
-    width : 75%;
-    height: 50px;
-    box-shadow: 3px 3px 5px;
-}
-
-.model-input
-{
-    padding-bottom: 25px;
-}
-
-.search-omni
-{
-    text-align: center;
-    width: 35%;
-}
-
-#omni-info-close
-{
-    text-align: right;
-    cursor: pointer;
-}
-
-#omni-jumbo
-{
-    padding-top: 25px;
-}
-
-#omni-information
-{
-
-}
-
-#model-form-body
-{
-    width: 50%;
-    text-align: left;
-}
-
-#create-model-form
+#posting
 {
     width: 100%;
+
+}
+
+#search-ca
+{
+    position: relative;
+    float: right;
 }
 
