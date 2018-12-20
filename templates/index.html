@@ -1,64 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="../static/scripts/omni.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="../static/scripts/main.js"></script>
     <link rel="stylesheet" type="text/css" href="static/style/main.css">
     <meta charset="UTF-8">
-    <title>OMNI - Open Model Initiative</title>
+    <title>Career Ascension - Information Technology Job Board</title>
 </head>
 <body>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/"><img src="./static/images/omni_logo.png"></a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="/upload">Upload Model</a></li>
-            <li><a href="/find">Find Model</a></li>
+<nav class="navbar navbar-expand-md bg-light navbar-light">
+    <a class="navbar-brand" href="#"><img src="./static/images/mach_2_short_final.png" width="50px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    Categories
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Systems Administration</a>
+                    <a class="dropdown-item" href="#">Programming</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Post</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
         </ul>
     </div>
 </nav>
 
 <!--- Main Container -->
 <div class="container">
-    <div class="row" id = "omni-information">
-        <div class = "jumbotron" id = "omni-jumbo">
-            <div id = "omni-info-close">
+    <div class="row" id="omni-information">
+        <div class="jumbotron" id="omni-jumbo">
+            <div id="omni-info-close">
                 <span class="glyphicon glyphicon-remove" onclick="closeInfo()"></span>
             </div>
             <h3 style="text-align: center">Welcome to OMNI</h3>
-            <p>Synthia Labs' <b style="color:#ff9000">Open Model Initiative</b> is a free and open source <b style="color:#ff9000">Machine Learning Model</b> server.
-            Members can upload pre-trained models to our database so that others can download and use these models
-                for free. Members can also create new models to train with the community using the open source <b style="color:#ff9000">Synthia Model Server.</b></p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="panel panel-default">
-            <div class="panel-heading">Latest Models</div>
-            <div class="panel-body">
-                <table class="table table-hover table-responsive">
-                    <thead>
-                    <th>Name</th>
-                    <th>Created By</th>
-                    <th>Last Updated</th>
-                    <th>URL</th>
-                    <th>Tags</th>
-                    </thead>
-                    {% for model in models %}
-                        <tr>
-                            <td><p>{{ model['Name'] }}</p></td>
-                            <td><p>{{ model['CreatedBy'] }}</p></td>
-                            <td><p>{{ model['LastUpdated'] }}</p></td>
-                            <td><p><a href={{ model['URL'] }}>{{ model['URL'] }}</a></p></td>
-                            <td><p>{{ model['Tags'] }}</p></td>
-                        </tr>
-                    {% endfor %}
-                </table>
-            </div>
+            <p>Synthia Labs' <b style="color:#ff9000">Open Model Initiative</b> is a free and open source <b
+                    style="color:#ff9000">Machine Learning Model</b> server.
+                Members can upload pre-trained models to our database so that others can download and use these models
+                for free. Members can also create new models to train with the community using the open source <b
+                        style="color:#ff9000">Synthia Model Server.</b></p>
         </div>
     </div>
 </div>
