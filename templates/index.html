@@ -14,7 +14,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-light navbar-light sticky-top">
-    <a class="navbar-brand" href="#"><img src="./static/images/mach_2_short_final.png" width="50px"></a>
+    <a class="navbar-brand" href="#"><img src="./static/images/mach_2_short_final.png" width="50px" alt="Back to Digital Ascension"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -59,22 +59,18 @@
 <!-- Testing the posting sections -->
 <section id="postings-section">
     <div class="container" align ="center">
+    <div class = "row">
+        <h3>DevOps Jobs</h3>
         {% for post in postings %}
-            <div class="row">
-                <div class="col-sm-2">
-                    Logo
-                </div>
-                <div class="col-sm-2">
-                    {{ post.Company }}
-                </div>
-                <div class="col-sm-4">
-                    {{ post.Title }}
-                </div>
-                <div class="col-sm-4">
-                    12-20-2018
-                </div>
-            </div>
+            <table class="table">
+                <tr><td><img src="{{ post.Logo }}" width="35px" class="img-responsive"/></td>
+                    <td>{{ post.Company }}</td>
+                    <td>{{ post.Title }}</td>
+                    <td>12-10-2018</td>
+                </tr>
+            </table>
         {% endfor %}
+    </div>
     </div>
 </section>
 </body>

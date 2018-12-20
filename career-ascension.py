@@ -21,8 +21,16 @@ def ca_index():
         )
     postings.append(
         {
-            'Company': 'Test1',
+            'Logo' : './static/images/mach_2_short_final.png',
+            'Company': 'Digital Ascension',
             'Title': 'Site Reliability Engineer',
+        }
+    )
+    postings.append(
+        {
+            'Logo': './static/images/mach_2_short_final.png',
+            'Company': 'Digital Ascension',
+            'Title': 'DevOps',
         }
     )
     return render_template('index.html', postings = postings)
