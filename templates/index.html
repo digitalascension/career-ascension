@@ -58,34 +58,42 @@
 </section>
 
 {% for category in categories %}
-<!-- Testing the posting sections -->
-<section id="postings-section">
-    <div class="container" align="center">
-        <div class="row">
-            <h3>{{ category }} Jobs</h3>
-            {% if postings %}
-                {% for post in postings %}
-                    {% if post.Category == category %}
+    {% set empty = True %}
+    <!-- Testing the posting sections -->
+    <section id="postings-section">
+        <div class="container" align="center">
+            <div class="row">
+                <h3>{{ category }} Jobs</h3>
+                {% if postings %}
+                    {% for post in postings %}
+                        {% if post.Category == category %}
+                            {% set empty = False %}
+                            <table class="table">
+                                <tr>
+                                    <td><img src="{{ post.Logo }}" width="35px" class="img-responsive"/></td>
+                                    <td>{{ post.Company }}</td>
+                                    <td>{{ post.Title }}</td>
+                                    <td>12-10-2018</td>
+                                </tr>
+                            </table>
+                        {% endif %}
+                        {% if not empty %}
+                        <table class="table">
+                        <tr>
+                            <td>There are not jobs posted for this category.</td>
+                        </tr>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
                     <table class="table">
                         <tr>
-                            <td><img src="{{ post.Logo }}" width="35px" class="img-responsive"/></td>
-                            <td>{{ post.Company }}</td>
-                            <td>{{ post.Title }}</td>
-                            <td>12-10-2018</td>
+                            <td>There are not jobs posted for this category.</td>
                         </tr>
                     </table>
-                    {% endif %}
-                {% endfor %}
-            {% else %}
-                <tr>
-                    <table class="table">
-                        <td>There are not jobs posted for this category.</td>
-                    </table>
-                </tr>
-            {% endif %}
+                {% endif %}
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 {% endfor %}
 
 </body>
