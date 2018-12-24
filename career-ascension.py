@@ -1,27 +1,36 @@
 #!/Library/Frameworks/Python.framework/Versions/3.6/bin/python3
 
+from flask import Flask
+from flask import render_template
+
 import omnidb
 
-from flask import Flask
-from flask import render_template, redirect, request
-
 app = Flask(__name__)
-db = omnidb.OmniDB(host='192.168.33.40', user='root',passwd='rootpassword1234', database='OMNIDB')
+db = omnidb.OmniDB(host='192.168.33.40', user='root', passwd='rootpassword1234', database='OMNIDB')
+
 
 @app.route('/')
 def ca_index():
     postings = []
+    categories = [
+        'DevOps',
+        'IT Support',
+        'Programming',
+        'System Administration',
+        'Site Reliability Engineering',
+        'Web Development'
+    ]
     result = db.get_latest_models()
     for r in result:
         postings.append(
             {
-                'Company' : r[1],
-                'Title' : r[2],
-             }
+                'Company': r[1],
+                'Title': r[2],
+            }
         )
     postings.append(
         {
-            'Logo' : './static/images/mach_2_short_final.png',
+            'Logo': './static/images/mach_2_short_final.png',
             'Company': 'Digital Ascension',
             'Title': 'Site Reliability Engineer',
         }
@@ -33,15 +42,18 @@ def ca_index():
             'Title': 'DevOps',
         }
     )
-    return render_template('index.html', postings = postings)
+    return render_template('index.html', categories=categories, postings=postings)
+
 
 @app.route('/category/<category>', methods=['GET'])
 def get_category(category):
     return render_template('job_category.html')
 
+
 @app.route('/post', methods=['GET'])
 def find_model():
     return render_template('post_job.html')
+
 
 @app.route('/search/<value>', methods=['GET'])
 def search_model(value):
@@ -50,6 +62,6 @@ def search_model(value):
     print(result)
     return result
 
+
 if __name__ == '__main__':
     app.run(debug=True)
-

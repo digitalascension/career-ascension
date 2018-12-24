@@ -9,12 +9,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="../static/scripts/main.js"></script>
     <link rel="stylesheet" type="text/css" href="static/style/main.css">
-    <link rel="shortcut icon" href="./static/images/mach_2_short_white.png" />
+    <link rel="shortcut icon" href="./static/images/mach_2_short_white.png"/>
     <title>Career Ascension - Information Technology Job Board</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-light navbar-light sticky-top">
-    <a class="navbar-brand" href="#"><img src="./static/images/mach_2_short_final.png" width="50px" alt="Back to Digital Ascension"></a>
+    <a class="navbar-brand" href="#"><img src="./static/images/mach_2_short_final.png" width="50px"
+                                          alt="Back to Digital Ascension"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -56,22 +57,34 @@
     </div>
 </section>
 
+{% for category in categories %}
 <!-- Testing the posting sections -->
 <section id="postings-section">
-    <div class="container" align ="center">
-    <div class = "row">
-        <h3>DevOps Jobs</h3>
-        {% for post in postings %}
-            <table class="table">
-                <tr><td><img src="{{ post.Logo }}" width="35px" class="img-responsive"/></td>
-                    <td>{{ post.Company }}</td>
-                    <td>{{ post.Title }}</td>
-                    <td>12-10-2018</td>
+    <div class="container" align="center">
+        <div class="row">
+            <h3>{{ category }} Jobs</h3>
+            {% if post %}
+                {% for post in postings %}
+                    <table class="table">
+                        <tr>
+                            <td><img src="{{ post.Logo }}" width="35px" class="img-responsive"/></td>
+                            <td>{{ post.Company }}</td>
+                            <td>{{ post.Title }}</td>
+                            <td>12-10-2018</td>
+                        </tr>
+                    </table>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <table class="table">
+                        <td>There are not jobs posted for this category.</td>
+                    </table>
                 </tr>
-            </table>
-        {% endfor %}
-    </div>
+            {% endif %}
+        </div>
     </div>
 </section>
+{% endfor %}
+
 </body>
 </html>
