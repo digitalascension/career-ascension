@@ -33,6 +33,7 @@ def ca_index():
             'Logo': './static/images/mach_2_short_final.png',
             'Company': 'Digital Ascension',
             'Title': 'Site Reliability Engineer',
+            'Category': 'Site Reliability Engineering'
         }
     )
     postings.append(
@@ -40,6 +41,7 @@ def ca_index():
             'Logo': './static/images/mach_2_short_final.png',
             'Company': 'Digital Ascension',
             'Title': 'DevOps',
+            'Category':'DevOps'
         }
     )
     return render_template('index.html', categories=categories, postings=postings)

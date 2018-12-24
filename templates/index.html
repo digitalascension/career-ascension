@@ -63,8 +63,9 @@
     <div class="container" align="center">
         <div class="row">
             <h3>{{ category }} Jobs</h3>
-            {% if post %}
+            {% if postings %}
                 {% for post in postings %}
+                    {% if post.Category == category %}
                     <table class="table">
                         <tr>
                             <td><img src="{{ post.Logo }}" width="35px" class="img-responsive"/></td>
@@ -73,6 +74,7 @@
                             <td>12-10-2018</td>
                         </tr>
                     </table>
+                    {% endif %}
                 {% endfor %}
             {% else %}
                 <tr>
